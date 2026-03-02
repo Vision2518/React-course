@@ -1,0 +1,1 @@
+ echo $null > File.txt
