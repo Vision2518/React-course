@@ -1,0 +1,3 @@
+State=data that is connected to the HTML
+when we update this data it will update the HTML
+React.useState();
