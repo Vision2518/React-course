@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <title>3h.html</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      function App() {
+        const [inputText, setInputText] = React.useState("");
+        const [nickName, setNickName] = React.useState("");
+        function saveInputText(event) {
+          setInputText(event.target.value);
+        }
+        function generateName() {
+          const names = [
+            "king",
+            "hacker",
+            "shadow",
+            "boss",
+            "legend",
+            "pro",
+            "Danger",
+            "Ghost",
+            "hero",
+            "anonymous",
+          ];
+          const randomIndex = Math.floor(Math.random() * names.length);
+          setNickName(names[randomIndex] + " " + inputText + "😎");
+        }
+        function clearAll() {
+          setInputText("");
+          setNickName("");
+        }
+        function setExample() {
+          setInputText("Vision");
+        }
+        return (
+          <>
+            <h1>NickName Generator🔥</h1>
+            <input
+              onChange={saveInputText}
+              placeholder="Type your name here"
+              value={inputText}
+            ></input>
+            <button onClick={generateName}>Generate</button>
+            <button onClick={clearAll}>Clear</button>
+            <button onClick={setExample}>Example</button>
+            <p>{nickName}</p>
+          </>
+        );
+      }
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
