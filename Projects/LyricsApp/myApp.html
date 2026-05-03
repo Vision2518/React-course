@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Christian Lyrics App</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      function App() {
+        const songs = [
+          {
+            title: "Manparcha",
+            lyrics: "Malai Gham Manparcha Malai",
+            chords: "G C D Am",
+          },
+          {
+            title: "Malai Gham Manparcha",
+            lyrics: "Malai Gham Manparcha Malai Jun Manparcha",
+            chords: "G C D Am",
+          },
+        ];
+        const [selectedSong, setSelectedSong] = React.useState(null);
+        return (
+          <>
+            <Header />
+            {selectedSong === null ? (
+              <SongList songs={songs} setSelectedSong={setSelectedSong} />
+            ) : (
+              <SongCard song={selectedSong} />
+            )}
+          </>
+        );
+      }
+      function Header() {
+        return (
+          <div>
+            <h1>Welcome to Nepali Lyrics And Chords App</h1>
+          </div>
+        );
+      }
+      function SongList({ songs, setSelectedSong }) {
+        return (
+          <div>
+            {songs.map((song, index) => (
+              <div
+                key={song.title}
+                onClick={() => setSelectedSong(song)}
+                style={{ cursor: "pointer" }}
+              >
+                <h3>{song.title}</h3>
+              </div>
+            ))}
+          </div>
+        );
+      }
+      function SongCard({ song }) {
+        return (
+          <div>
+            <h2>{song.title}</h2>
+            <p>
+              <b>Lyrics:</b> {song.lyrics}
+            </p>
+            <p>
+              <b>Chords:</b> {song.chords}
+            </p>
+            <hr />
+          </div>
+        );
+      }
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
