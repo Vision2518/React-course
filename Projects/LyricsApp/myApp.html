@@ -29,7 +29,7 @@
             {selectedSong === null ? (
               <SongList songs={songs} setSelectedSong={setSelectedSong} />
             ) : (
-              <SongCard song={selectedSong} />
+              <SongCard song={selectedSong} setSelectedSong={setSelectedSong} />
             )}
           </>
         );
@@ -56,7 +56,7 @@
           </div>
         );
       }
-      function SongCard({ song }) {
+      function SongCard({ song,setSelectedSong}) {
         return (
           <div>
             <h2>{song.title}</h2>
@@ -67,7 +67,12 @@
               <b>Chords:</b> {song.chords}
             </p>
             <hr />
+            <button onClick={() => setSelectedSong(null)}>
+            Back
+            </button>
           </div>
+          
+            
         );
       }
       const container = document.querySelector(".js-container");
